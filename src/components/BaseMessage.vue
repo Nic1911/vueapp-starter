@@ -1,5 +1,5 @@
 <template>
-	<div class="hello">
+	<div class="c-basemessage">
 		<h1>{{ msg }}</h1>
 		<h2>{{ desc }}</h2>
 	</div>
@@ -17,6 +17,6 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-.hello {
+.c-basemessage {
 }
 </style>

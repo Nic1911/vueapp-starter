@@ -1,12 +1,18 @@
 <template>
-	<div class="home">
-		<img alt="Vue logo" src="../assets/logo.png" />
-		<BaseMessage :msg="title" :desc="description" />
-	</div>
+	<Layout>
+		<div class="home">
+			<BaseMessage
+				:class="$style.basemessage"
+				:msg="title"
+				:desc="description"
+			/>
+		</div>
+	</Layout>
 </template>
 
 <script>
 // components
+import Layout from "@/layouts/main.vue";
 import BaseMessage from "@/components/BaseMessage.vue";
 // data
 import appConfig from "@/app.config.json";
@@ -14,6 +20,7 @@ import appConfig from "@/app.config.json";
 export default {
 	name: "Home",
 	components: {
+		Layout,
 		BaseMessage,
 	},
 	data() {
@@ -24,3 +31,9 @@ export default {
 	},
 };
 </script>
+
+<style lang="scss" module>
+.basemessage {
+	font-family: $system-default-font-family;
+}
+</style>
