@@ -29,6 +29,7 @@ export default {
 			description: appConfig.description,
 		};
 	},
+	async created() {},
 };
 </script>
 
