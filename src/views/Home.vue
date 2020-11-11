@@ -1,20 +1,20 @@
 <template>
 	<div class="home">
 		<img alt="Vue logo" src="../assets/logo.png" />
-		<HelloWorld :msg="title" :desc="description" />
+		<BaseMessage :msg="title" :desc="description" />
 	</div>
 </template>
 
 <script>
 // components
-import HelloWorld from "@/components/HelloWorld.vue";
+import BaseMessage from "@/components/BaseMessage.vue";
 // data
 import appConfig from "@/app.config.json";
 
 export default {
 	name: "Home",
 	components: {
-		HelloWorld,
+		BaseMessage,
 	},
 	data() {
 		return {
