@@ -1,9 +1,18 @@
 <template>
 	<div class="about">
 		<div class="playgroud" ref="scroller">
-			<header class="head" ref="head">HEAD</header>
-			<aside class="aside" ref="aside">ASIDE</aside>
+			<header class="head" ref="head">{{ data.headTitle }}</header>
+			<aside class="aside" ref="aside">{{ data.asideTitle }}</aside>
 			<div class="content" ref="content">
+				<h1>{{ data.contentTitle }}</h1>
+				<img
+					v-if="data.cover"
+					class="project-block-gallery__slide-img"
+					:srcset="
+						`${data.cover.src640} 640w, ${data.cover.src768} 768w, ${data.cover.src1200} 1200w, ${data.cover.src1920} 1920w`
+					"
+					:alt="data.cover.title"
+				/>
 				<section>
 					<div class="a box"><span>box</span></div>
 				</section>
@@ -40,18 +49,25 @@
 </template>
 
 <script>
+// data
+import data from "@/data/about.json";
 // dependencies
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 export default {
+	data() {
+		return {
+			currentSection: 1,
+			scrollPercent: 0,
+			// data
+			data: null,
+		};
+	},
+	created() {
+		this.data = data;
+	},
 	methods: {
-		data() {
-			return {
-				currentSection: 1,
-				scrollPercent: 0,
-			};
-		},
 		init() {
 			gsap.registerPlugin(ScrollTrigger);
 			gsap.utils.toArray("section").forEach((section, index) => {
@@ -123,10 +139,10 @@ export default {
 	grid-area: 2 / 2 / 2 / 3;
 
 	section {
-		min-height: 25vh;
+		min-height: 10vh;
 
 		&:nth-child(even) {
-			background-color: rgba(0, 0, 0, 0.3);
+			background-color: rgba(148, 236, 130, 0.76);
 		}
 	}
 }
