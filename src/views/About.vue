@@ -4,44 +4,46 @@
 			<header class="head" ref="head">{{ data.headTitle }}</header>
 			<aside class="aside" ref="aside">{{ data.asideTitle }}</aside>
 			<div class="content" ref="content">
-				<h1>{{ data.contentTitle }}</h1>
-				<img
-					v-if="data.cover"
-					class="project-block-gallery__slide-img"
-					:srcset="
-						`${data.cover.src640} 640w, ${data.cover.src768} 768w, ${data.cover.src1200} 1200w, ${data.cover.src1920} 1920w`
-					"
-					:alt="data.cover.title"
-				/>
-				<section>
-					<div class="a box"><span>box</span></div>
+				<div class="content__hero">
+					<h1>{{ data.contentTitle }}</h1>
+					<img
+						v-if="data.cover"
+						class="project-block-gallery__slide-img"
+						:srcset="
+							`${data.cover.src640} 640w, ${data.cover.src768} 768w, ${data.cover.src1200} 1200w, ${data.cover.src1920} 1920w`
+						"
+						:alt="data.cover.title"
+					/>
+				</div>
+				<section class="section">
+					<div class="a box"><span>box a</span></div>
 				</section>
-				<section>
-					<div class="b box"><span>box</span></div>
+				<section class="section">
+					<div class="b box"><span>box b</span></div>
 				</section>
-				<section>
-					<div class="c box"><span>box</span></div>
+				<section class="section">
+					<div class="c box"><span>box c</span></div>
 				</section>
-				<section>
-					<div class="d box"><span>box</span></div>
+				<section class="section">
+					<div class="d box"><span>box d</span></div>
 				</section>
-				<section>
-					<div class="e box"><span>box</span></div>
+				<section class="section">
+					<div class="e box"><span>box e</span></div>
 				</section>
-				<section>
-					<div class="f box"><span>box</span></div>
+				<section class="section">
+					<div class="f box"><span>box f</span></div>
 				</section>
-				<section>
-					<div class="g box"><span>box</span></div>
+				<section class="section">
+					<div class="g box"><span>box g</span></div>
 				</section>
-				<section>
-					<div class="h box"><span>box</span></div>
+				<section class="section">
+					<div class="h box"><span>box h</span></div>
 				</section>
-				<section>
-					<div class="i box"><span>box</span></div>
+				<section class="section">
+					<div class="i box"><span>box i</span></div>
 				</section>
-				<section>
-					<div class="l box"><span>box</span></div>
+				<section class="section">
+					<div class="l box"><span>box l</span></div>
 				</section>
 			</div>
 		</div>
@@ -70,27 +72,40 @@ export default {
 	methods: {
 		init() {
 			gsap.registerPlugin(ScrollTrigger);
-			gsap.utils.toArray("section").forEach((section, index) => {
-				const w = section.querySelector(".box");
-				// console.log(section);
-				const [x, xEnd] =
-					index % 2
-						? ["100%", (w.scrollWidth - section.offsetWidth) * -1]
-						: [w.scrollWidth * -1, 0];
 
-				gsap.to(section, {
-					scrollTrigger: {
-						trigger: section.querySelectorAll(".box"),
-						scrub: true,
-						pin: true,
-						markers: true,
-						start: "center center",
-						end: "bottom -100%",
-						toggleClass: "active",
-						ease: "power2",
-					},
-				});
+			gsap.to(".box.a", {
+				// x: +400,
+				// rotate: 90,
+				scrollTrigger: {
+					trigger: ".box.a",
+					// pin: true,
+					start: "top bottom",
+					end: `bottom top`,
+					scrub: 1,
+					markers: true,
+				},
 			});
+			// gsap.utils.toArray("section").forEach((section, index) => {
+			// 	const w = section.querySelector(".box");
+			// 	console.log(w);
+			// 	console.log(section);
+			// 	const [x, xEnd] =
+			// 		index % 2
+			// 			? ["100%", (w.scrollWidth - section.offsetWidth) * -1]
+			// 			: [w.scrollWidth * -1, 0];
+
+			// 	gsap.to(w, {
+			// 		// x: 400,
+			// 		scrollTrigger: {
+			// 			trigger: section,
+			// 			scrub: true,
+			// 			// pin: true,
+			// 			markers: true,
+			// 			start: "top top",
+			// 			end: `bottom 100px`,
+			// 		},
+			// 	});
+			// });
 		},
 	},
 	mounted() {
@@ -113,6 +128,14 @@ export default {
 
 	grid-template-rows: 100px auto;
 	grid-template-columns: 0.5fr 2fr;
+}
+
+.section {
+	min-height: 30vh;
+
+	&:nth-child(even) {
+		background-color: rgba(148, 236, 130, 0.76);
+	}
 }
 
 .head {
@@ -138,12 +161,8 @@ export default {
 
 	grid-area: 2 / 2 / 2 / 3;
 
-	section {
-		min-height: 10vh;
-
-		&:nth-child(even) {
-			background-color: rgba(148, 236, 130, 0.76);
-		}
+	&__hero {
+		min-height: 20vh;
 	}
 }
 

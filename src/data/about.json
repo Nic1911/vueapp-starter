@@ -16,8 +16,8 @@
 		"src768": "https://via.placeholder.com/768x400",
 		"src1200": "https://via.placeholder.com/1200x960",
 		"src1920": "https://via.placeholder.com/1920x1080",
-		"fileSize": "200k",
-		"fileName": "category_cappe_cover.jpg",
-		"id": "category_cappe_cover"
+		"fileSize": "200kb",
+		"fileName": "cover.jpg",
+		"id": "cover"
 	}
 }
